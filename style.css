@@ -124,6 +124,7 @@ section {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    
 }
 
 .main-container .image {
@@ -132,11 +133,12 @@ section {
     border-radius: 100%;
     overflow: hidden;
     box-shadow: 0 0 50px #cb9bf3;
-width: 300px; /* تحديد العرض */
+    width: 300px; /* تحديد العرض */
     height: 300px; /* تحديد الارتفاع */
     object-fit: cover; /* لضمان أن الصورة تغطي المساحة بدون تشويه */
     border-radius: 8px; /* إذا كنت تريد زوايا دائرية */
     margin: 10px 0; /
+
 }
 
 .main-container .image img {
