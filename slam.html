@@ -229,6 +229,162 @@
             color: red;
             margin-top: 10px;
         }
+
+        .features {
+            background-color: #222;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 50px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        .features h2 {
+            font-size: 2.5em;
+            text-align: center;
+            color: #cb9bf3;
+            margin-bottom: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-item i {
+            font-size: 2em;
+            color: #cb9bf3;
+            margin-right: 15px;
+        }
+
+        .feature-text {
+            font-size: 1.2em;
+            color: white;
+        }
+
+        .feature-text strong {
+            color: #cb9bf3;
+        }
+
+
+        .video-section {
+            margin-top: 50px;
+            align-items: center;
+        }
+
+        .video-section h2 {
+            font-size: 2.5em;
+            text-align: center;
+            color: #cb9bf3;
+            margin-bottom: 20px;
+
+        }
+
+        .video-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .video-card {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: calc(50% - 10px);
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .video-card iframe {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-description {
+            color: #fff;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            .video-card {
+                width: 100%;
+            }
+        }
+
+        .course-conclusion {
+    background-color: #4a4a4a98;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.course-conclusion h2 {
+    color: #cb9bf3;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.course-conclusion p {
+    font-size: 20px;
+    color: #ffffff;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    
+}
+
+.course-exercises {
+    background-color: #050505;
+    color: #ffffff;
+    padding: 20px;
+    border: 2px solid #cb9bf3;;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    
+}
+
+.course-exercises h3 {
+    color: #cb9bf3;;
+    margin-bottom: 10px;
+}
+
+.course-exercises ol {
+    text-align: center;
+    padding-left: 20px;
+    margin: 0;
+    list-style: none;
+}
+
+.course-exercises ol li {
+    margin-bottom: 10px;
+}
+
+.course-exercises strong {
+    color: #cb9bf3;
+}
+
+.course-exercises li::marker {
+    color: #cb9bf3;
+}
+
+.course-conclusion p:last-child {
+    font-weight: bold;
+    color: #cb9bf3;
+}
+
     </style>
 </head>
 
@@ -242,9 +398,37 @@
         </div>
     </div>
 
-   
+
 
     <div class="course-title">رحلة نحو السلام الداخلي</div>
+
+    <div class="features">
+        <h2>مميزات الكورس</h2>
+
+        <div class="feature-item" data-aos="fade-up" data-aos-duration="1500">
+            <i class="fas fa-check-circle"></i>
+            <div class="feature-text"><strong>تمارين عملية:</strong> هتقدر تطبق كل حاجة بشكل عملي وتلمس التغيير بنفسك.
+            </div>
+        </div>
+
+        <div class="feature-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
+            <i class="fas fa-users"></i>
+            <div class="feature-text"><strong>قصص نجاح حقيقية:</strong> هتشوف ناس كتير قدرو يوصلوا للسلام الداخلي
+                باستخدام الخطوات دي.</div>
+        </div>
+
+        <div class="feature-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+            <i class="fas fa-user"></i>
+            <div class="feature-text"><strong>إرشادات شخصية:</strong> هتاخد نصايح محددة لحالاتك الشخصية عشان كل حاجة
+                تبقى مناسبة ليك.</div>
+        </div>
+
+        <div class="feature-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+            <i class="fas fa-hand-holding-heart"></i>
+            <div class="feature-text"><strong>تحفيز:</strong> انضمامك للكورس ده هو الخطوة الصح الأولى في رحلتك لتحقيق
+                الراحة النفسية. برافو عليك إنك قررت تاخد وقت وتستثمر في نفسك عشان تعيش حياة أكتر توازن وراحة.</div>
+        </div>
+    </div>
 
     <div class="episode">
         <div class="episode-title">المقدمة</div>
@@ -258,45 +442,45 @@
                 Your browser does not support the audio tag.
             </audio>
         </div>
-    
-    <div class="audio">
-        <audio controls>
-            <source src="المقدمة/2.ogg" type="audio/mpeg">
-            Your browser does not support the audio tag.
-        </audio>
-    </div>
-    <div class="audio">
-        <audio controls>
-            <source src="المقدمة/3.ogg" type="audio/mpeg">
-            Your browser does not support the audio tag.
-        </audio>
-    </div>
-    <div class="audio">
-        <audio controls>
-            <source src="المقدمة/4.ogg" type="audio/mpeg">
-            Your browser does not support the audio tag.
-        </audio>
-    </div>
-    <div class="audio">
-        <audio controls>
-            <source src="المقدمة/5.ogg" type="audio/mpeg">
-            Your browser does not support the audio tag.
-        </audio>
-    </div>
-    <div class="audio">
-        <audio controls>
-            <source src="المقدمة/6.ogg" type="audio/mpeg">
-            Your browser does not support the audio tag.
-        </audio>
-    </div>
-    <div class="audio">
-        <audio controls>
-            <source src="المقدمة/7.ogg" type="audio/mpeg">
-            Your browser does not support the audio tag.
-        </audio>
-    </div>
 
-    <img src="image1.jpg" alt="صورة المقدمة" class="image">
+        <div class="audio">
+            <audio controls>
+                <source src="المقدمة/2.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="المقدمة/3.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="المقدمة/4.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="المقدمة/5.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="المقدمة/6.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="المقدمة/7.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+
+        <img src="image1.jpg" alt="صورة المقدمة" class="image">
     </div>
 
 
@@ -558,52 +742,96 @@
     <div class="episode">
         <div class="episode-title">الخاتمة : خريطة الطريق إلى السلام الداخلي</div>
         <div class="episode-description"></div>
-        <audio class="audio" controls>
-            <source src="episode8.mp3" type="audio/mpeg">
-            Your browser does not support the audio tag.
-        </audio>
+
         <img src="image8.jpg" alt="صورة الحلقة 8" class="image">
     </div>
+    <div class="video-section">
+        <h2>فيديوهات التمارين الرياضية</h2>
 
+        <div class="episode">
+            <div class="video-card" data-aos="fade-up" data-aos-duration="1500">
+                <iframe src="1.mp4" title="فيديو التمرين الأول" allowfullscreen></iframe>
+
+            </div>
+
+            <div class="video-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
+                <iframe src="4.mp4" title="فيديو التمرين الثاني" allowfullscreen></iframe>
+
+            </div>
+
+            <div class="video-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+                <iframe src="7.mp4" title="فيديو التمرين الثالث" allowfullscreen></iframe>
+
+            </div>
+
+            <div class="video-card" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+                <iframe src="8.mp4" title="فيديو التمرين الرابع" allowfullscreen></iframe>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="course-conclusion">
+        <h2>🎉 خاتمة الكورس 🎉</h2>
+        <p>تهانينا! لقد وصلت إلى نهاية رحلتك في هذا الكورس، ولكن هذه ليست نهاية الطريق، بل هي بداية جديدة لحياة مليئة بالسلام الداخلي والهدوء النفسي. من خلال هذا الكورس، تعلمت كيف تفهم نفسك بشكل أعمق، وكيف تتعامل مع ضغوط الحياة والعواطف بحكمة.</p>
+        <p>استمر في تطبيق التمارين والتقنيات التي تعلمتها، واجعلها جزءًا من روتينك اليومي. تذكّر أن السلام الداخلي ليس هدفًا بعيدًا، بل هو رحلة مستمرة تحتاج إلى الممارسة اليومية. الأدوات التي اكتسبتها هنا هي أدوات تساعدك في بناء حياتك النفسية المستقرة وتحقيق التوازن الذي تستحقه.</p>
+        <div class="course-exercises">
+            <h2>📝 تدريبات الكورس</h2>
+            <ol>
+                <li><strong>كتابة اليوميات (فهم الذات):</strong> خصص 10 دقائق يوميًا لكتابة أفكارك ومشاعرك، وحاول تحليل كيف تؤثر مواقف معينة في حياتك على حالتك النفسية.</li>
+                <li><strong>تأمل يومي (الاسترخاء):</strong> مارس التأمل لمدة 5-10 دقائق كل صباح، وركز على التنفس العميق وأفرغ ذهنك من الأفكار السلبية.</li>
+                <li><strong>تمرين الاسترخاء التدريجي (التعامل مع التوتر):</strong> في نهاية يومك، اجلس في مكان هادئ واسترخِ تدريجيًا من رأسك إلى قدميك باستخدام تقنيات التنفس العميق.</li>
+                <li><strong>مراقبة مشاعرك (إدارة العواطف):</strong> في المواقف الصعبة، توقف وفكر في مشاعرك: ما الذي تشعر به؟ كيف يمكنك التعبير عن هذا الشعور بطريقة صحية؟</li>
+                <li><strong>تمارين الذكاء العاطفي (التواصل الاجتماعي):</strong> مارس الإنصات الفعّال في محادثاتك اليومية، وركز على مشاعر الآخرين بدون مقاطعة أو الحكم عليهم.</li>
+                <li><strong>تمارين جسدية يومية (الصحة النفسية):</strong> قم بتمارين رياضية خفيفة لمدة 15-20 دقيقة يوميًا، مثل المشي أو اليوغا.</li>
+                <li><strong>إعادة تقييم الأهداف (تحقيق التوازن):</strong> خصص وقتًا أسبوعيًا لمراجعة أهدافك وتحديد أولوياتك بناءً على قيمك الشخصية.</li>
+            </ol>
+        </div>
+        <p>🌟 اجعل هذه التدريبات جزءًا من حياتك اليومية، وستجد أن التغيير الحقيقي يأتي من الممارسة المستمرة. تذكر دائمًا أن رحلتك نحو السلام الداخلي تعتمد على وعيك واستمرارك في النمو الشخصي.</p>
+    </div>
+    
     <a href="index.html" class="back-button">العودة إلى الصفحة الرئيسية</a>
 
 </body>
-    <script>
-        const PASSWORD = "Hebaindex@123";  // Replace this with your actual password
+<script>
+    const PASSWORD = "Hebaindex@123";  // Replace this with your actual password
 
-        window.onload = function () {
-            document.getElementById("passwordModal").style.display = "flex";
-        };
+    window.onload = function () {
+        document.getElementById("passwordModal").style.display = "flex";
+    };
 
-        function checkPassword() {
-            const inputPassword = document.getElementById("passwordInput").value;
-            const errorMessage = document.getElementById("errorMessage");
+    function checkPassword() {
+        const inputPassword = document.getElementById("passwordInput").value;
+        const errorMessage = document.getElementById("errorMessage");
 
-            if (inputPassword === PASSWORD) {
-                document.getElementById("passwordModal").style.display = "none";
-            } else {
-                errorMessage.textContent = "كلمة المرور غير صحيحة";
-            }
+        if (inputPassword === PASSWORD) {
+            document.getElementById("passwordModal").style.display = "none";
+        } else {
+            errorMessage.textContent = "كلمة المرور غير صحيحة";
         }
+    }
 
-        // Hamburger menu
-        function hamburg() {
-            document.querySelector(".dropdown").style.transform = "translateY(0)";
-            document.querySelector(".hamburg").style.display = "none";
-            document.querySelector(".cancel").style.display = "inline";
-        }
+    // Hamburger menu
+    function hamburg() {
+        document.querySelector(".dropdown").style.transform = "translateY(0)";
+        document.querySelector(".hamburg").style.display = "none";
+        document.querySelector(".cancel").style.display = "inline";
+    }
 
-        function cancel() {
-            document.querySelector(".dropdown").style.transform = "translateY(-500px)";
-            document.querySelector(".hamburg").style.display = "inline";
-            document.querySelector(".cancel").style.display = "none";
-        }
-    </script>
+    function cancel() {
+        document.querySelector(".dropdown").style.transform = "translateY(-500px)";
+        document.querySelector(".hamburg").style.display = "inline";
+        document.querySelector(".cancel").style.display = "none";
+    }
+</script>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 
 
 </html>
