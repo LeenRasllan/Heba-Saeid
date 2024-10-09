@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السلام الداخلي - الكورس الأول</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMi1Tf0G5Mxq4xA+NEiYoXo9HquZJ4OswYJcO" crossorigin="anonymous">
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(78, 78, 78);
+            margin: 0;
+            padding: 20px;
+            font-family: 'Cairo', sans-serif; /* استخدام الخط الجديد */
+            background-image: url('back.png'); /* تعيين صورة الخلفية */
+            background-size: cover; /* تغطية الخلفية لكامل الصفحة */
+            background-attachment: fixed; /* جعل الخلفية ثابتة */
+            background-position: center; /* وضع الخلفية في وسط الصفحة */
+        }
+
+
+        nav {
+            width: 100%;
+            height: 10vh;
+            position: sticky;
+
+        }
+
+        .nav-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #cb9bf3;
+            text-shadow: 0 0 10px #cb9bf3;
+        }
+
+        .hamburg,
+        .cancel {
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            color: white;
+            display: none;
+            font-size: clamp(2.5rem, 0.5rem + 5vw, 3rem);
+        }
+
+        .nav-container .links {
+            display: flex;
+        }
+
+        .nav-container .links a {
+            position: relative;
+            font-size: 1.2rem;
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 550;
+            transition: 0.3s linear;
+        }
+
+        .nav-container .links a::before {
+            position: absolute;
+            content: "";
+            bottom: -3px;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background-color: #cb9bf3;
+            transition: 0.2s linear;
+        }
+
+        .nav-container .links a:hover::before {
+            width: 100%;
+        }
+
+        .nav-container .links a:hover {
+            color: #cb9bf3;
+        }
+
+
+        .course-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: #cb9bf3;
+            margin-bottom: 30px;
+        }
+
+        .episode {
+            background-color: #ffffff;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px #cb9bf3;
+            transition: transform 0.2s;
+            max-width: 600px;
+
+        }
+
+        .episode:hover {
+            transform: scale(1.02);
+        }
+
+        .episode-title {
+            font-size: 3em;
+            text-align: center;
+            color: #cb9bf3;
+
+        }
+
+        .episode-description {
+            color: #666;
+            text-align: center;
+            margin: 20px 10;
+            padding: 10px;
+        }
+
+        .audio {
+            margin: 10px 0;
+
+        }
+
+        .image {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .back-button {
+            display: block;
+            text-align: center;
+   padding: 20px;
+   font-size: medium;
+    background-color: #333;
+    color: #cb9bf3;
+    text-decoration: none;
+   
+    bottom: 0;
+    width: 100%;
+          
+            
+        }
+
+        .back-button:hover {
+            background-color:#cb9bf3;
+            color: black;
+        }
+
+        .dropdown {
+            z-index: 100;
+            position: absolute;
+            top: 0;
+            transform: translateY(-500px);
+            width: 100%;
+            height: auto;
+            backdrop-filter: blur(4px) brightness(40%);
+            box-shadow: 0 0 20px black;
+            transition: 0.2s linear;
+        }
+
+        .dropdown .links a {
+            display: flex;
+            color: white;
+            text-decoration: none;
+            justify-content: center;
+            padding: 15px 0;
+            align-items: center;
+            transition: 0.2s linear;
+        }
+
+        .dropdown .links a:hover {
+            background-color: #cb9bf3;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+                لايف كوتش <span> هبة سعيد</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a
+                        href="index.html">الرئيسية</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a
+                        href="cours.html">الكورسات</a></div>
+
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a
+                        href="https://wa.me/message/QORV76AWJWPUF1">التواصل</a></div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+        <div class="dropdown">
+            <div class="links">
+                <a href="index.html">المقدمة</a>
+                <a href="cours.html">الكورسات</a>
+                <a href="https://wa.me/message/QORV76AWJWPUF1">التواصل</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
+    <div class="course-title"> رحلة نحو السلام الداخلي</div>
+
+
+
+    <div class="episode">
+        <div class="episode-title">المقدمة</div>
+        <div class="episode-description">
+            الكورس ده زي رحلة شخصية هتاخدك من التوتر والمشاكل النفسية لحد ما توصل لسلامك الداخلي وهدوءك النفسي.
+            هنشتغل مع بعض خطوة بخطوة، وكل حاجة هنا معمولة علشان تساعدك تفهم نفسك أكتر، وتتعامل مع ضغوط الحياة بذكاء
+            وراحة.
+        </div>
+
+        <!-- تسجيلات الصوت تحت المقدمة -->
+        <div class="audio">
+            <audio controls>
+                <source src="المقدمة/1.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="المقدمة/2.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="المقدمة/3.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="المقدمة/4.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="المقدمة/5.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="المقدمة/6.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="المقدمة/7.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+
+        <img src="image1.jpg" alt="صورة المقدمة" class="image">
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="episode">
+        <div class="episode-title">فهم نفسك ووعيها</div>
+        <div class="episode-description">
+
+        </div>
+
+        <!-- تسجيلات الصوت تحت المقدمة -->
+        <div class="audio">
+            <audio controls>
+                <source src="فهم نفسك ووعيها/1.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="فهم نفسك ووعيها/2.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="فهم نفسك ووعيها/3.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="فهم نفسك ووعيها/4.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="فهم نفسك ووعيها/5.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="فهم نفسك ووعيها/6.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+
+        <div class="audio">
+            <audio controls>
+                <source src="فهم نفسك ووعيها/7.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio controls>
+                <source src="فهم نفسك ووعيها/8.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+
+        <img src="image1.jpg" alt="صورة المقدمة" class="image">
+    </div>
+
+
+
+
+
+
+
+
+    <div class="episode">
+        <div class="episode-title"> التعامل مع الضغوط والتوتر </div>
+        <div class="episode-description"> </div>
+        <div class="audio">
+            <audio class="audio" controls>
+                <source src="التعامل مع الضغط والتوتر\1.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <img src="image2.jpg" alt="صورة الحلقة 2" class="image">
+    </div>
+
+    <div class="episode">
+        <div class="episode-title">إدارة العواطف بذكاء</div>
+        <div class="episode-description"></div>
+        <div class="audio">
+            <audio class="audio" controls>
+                <source src="ادارة العواطف بذكاء\1.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio class="audio" controls>
+                <source src="ادارة العواطف بذكاء\2.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+
+            <audio class="audio" controls>
+                <source src="ادارة العواطف بذكاء\3.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio class="audio" controls>
+                <source src="ادارة العواطف بذكاء\4.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <img src="image3.jpg" alt="صورة الحلقة 3" class="image">
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="episode">
+        <div class="episode-title">تحسين العلاقات الاجتماعية</div>
+        <div class="episode-description"></div>
+        <div class="audio">
+            <audio class="audio" controls>
+                <source src="تحسين العلاقات الاجتماعية\1.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio class="audio" controls>
+                <source src="تحسين العلاقات الاجتماعية\2.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+            <audio class="audio" controls>
+                <source src="تحسين العلاقات الاجتماعية\3.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        <div class="audio">
+
+            <audio class="audio" controls>
+                <source src="تحسين العلاقات الاجتماعية\4.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+
+        </div>
+        <img src="image5.jpg" alt="صورة الحلقة 5" class="image">
+    </div>
+
+
+
+
+
+
+
+    <div class="episode">
+        <div class="episode-title"> العناية بالجسم لتعزيز الصحة النفسية </div>
+        <div class="episode-description"></div>
+        <div class="audio">
+
+            <audio class="audio" controls>
+                <source src="الصحة الجسدية/1.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+
+        </div>
+        <div class="audio">
+
+            <audio class="audio" controls>
+                <source src="الصحة الجسدية/2.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+
+        </div>
+        <div class="audio">
+
+            <audio class="audio" controls>
+                <source src="الصحة الجسدية/3.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+
+        </div>
+        <div class="audio">
+
+            <audio class="audio" controls>
+                <source src="الصحة الجسدية/4.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+
+        </div>
+        <div class="audio">
+
+            <audio class="audio" controls>
+                <source src="الصحة الجسدية/5.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+
+        </div>
+        <img src="image6.jpg" alt="صورة الحلقة 6" class="image">
+    </div>
+    </div>
+
+
+
+    <div class="episode">
+        <div class="episode-title">تحقيق السلام الداخلي رغم التحديات</div>
+        <div class="episode-description">
+        </div>
+        <div class="audio">
+
+            <audio class="audio" controls>
+                <source src="تحقيق السلام الداخلي\1.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+
+        </div>
+        <div class="audio">
+
+            <audio class="audio" controls>
+                <source src="تحقيق السلام الداخلي\2.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+
+        </div>
+        <div class="audio">
+
+            <audio class="audio" controls>
+                <source src="تحقيق السلام الداخلي\3.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+
+        </div>
+        <div class="audio">
+
+            <audio class="audio" controls>
+                <source src="تحقيق السلام الداخلي\4.ogg" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+
+        </div>
+        <img src="image7.jpg" alt="صورة الحلقة 7" class="image">
+    </div>
+
+    <div class="episode">
+        <div class="episode-title">الخاتمة : خريطة الطريق إلى السلام الداخلي</div>
+        <div class="episode-description"></div>
+        <audio class="audio" controls>
+            <source src="episode8.mp3" type="audio/mpeg">
+            Your browser does not support the audio tag.
+        </audio>
+        <img src="image8.jpg" alt="صورة الحلقة 8" class="image">
+    </div>
+
+    <a href="index.html" class="back-button">العودة إلى الصفحة الرئيسية</a>
+
+</body>
+
+</html>
