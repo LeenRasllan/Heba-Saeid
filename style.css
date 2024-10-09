@@ -8,15 +8,14 @@
 }
 
 body {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    font-family: 'Cairo', sans-serif;
     background-color: rgb(78, 78, 78);
-    font-family: 'Cairo', sans-serif; /* استخدام الخط الجديد */
-            background-image: url('back.png'); /* تعيين صورة الخلفية */
-            background-size: cover; /* تغطية الخلفية لكامل الصفحة */
-            background-attachment: fixed; /* جعل الخلفية ثابتة */
-            background-position: center; /* وضع الخلفية في وسط الصفحة */
+    margin: 0;
+    padding: 20px;
+    background-image: url('back.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 nav {
@@ -298,49 +297,68 @@ section {
 
 
 .container {
-    display: flex; /* استخدام flex لعرض الكورسات بشكل مرن */
-    flex-wrap: wrap; /* التفاف الكورسات إلى السطر التالي */
-    justify-content: center; /* توسيط الكورسات */
+    display: flex;
+    /* استخدام flex لعرض الكورسات بشكل مرن */
+    flex-wrap: wrap;
+    /* التفاف الكورسات إلى السطر التالي */
+    justify-content: center;
+    /* توسيط الكورسات */
     padding: 20px;
-    
+
 }
 
 .course {
-    background-color: #ffffff; /* خلفية بيضاء للدائرة */
-    margin: 20px; /* هامش بين الدوائر */
+    background-color: #ffffff;
+    /* خلفية بيضاء للدائرة */
+    margin: 20px;
+    /* هامش بين الدوائر */
     padding: 15px;
-    border-radius: 50%; /* يجعل الشكل دائريًا */
-    width: 150px; /* عرض الدائرة */
-    height: 150px; /* ارتفاع الدائرة */
-    display: flex; /* استخدام flex لتوسيع المحتوى داخل الدائرة */
-    flex-direction: column; /* ترتيب المحتوى عموديًا */
-    justify-content: center; /* توسيط المحتوى عموديًا */
-    align-items: center; /* توسيط المحتوى أفقيًا */
-    transition: transform 0.2s, box-shadow 0.2s; /* إضافة تأثير لصندوق الظل */
-    box-shadow: 0 0 20px rgba(203, 155, 243, 0.7); /* ظل دائري مشع */
+    border-radius: 50%;
+    /* يجعل الشكل دائريًا */
+    width: 150px;
+    /* عرض الدائرة */
+    height: 150px;
+    /* ارتفاع الدائرة */
+    display: flex;
+    /* استخدام flex لتوسيع المحتوى داخل الدائرة */
+    flex-direction: column;
+    /* ترتيب المحتوى عموديًا */
+    justify-content: center;
+    /* توسيط المحتوى عموديًا */
+    align-items: center;
+    /* توسيط المحتوى أفقيًا */
+    transition: transform 0.2s, box-shadow 0.2s;
+    /* إضافة تأثير لصندوق الظل */
+    box-shadow: 0 0 20px rgba(203, 155, 243, 0.7);
+    /* ظل دائري مشع */
 }
 
-/* إضفاء تأثير الموجات */
-.course:nth-child(odd) {
-    transform: translateY(+100px); /* تحريك الدوائر الفردية للأعلى */
-}
+
+
 
 .course:hover {
-    transform: scale(1.05); /* تكبير الدائرة عند التمرير */
-    box-shadow: 0 0 30px rgba(203, 155, 243, 1); /* زيادة ظل الدائرة عند التمرير */
-    background-color: #f9f9f9; /* تغيير لون الخلفية عند التمرير */
+    transform: scale(1.05);
+    /* تكبير الدائرة عند التمرير */
+    box-shadow: 0 0 30px rgba(203, 155, 243, 1);
+    /* زيادة ظل الدائرة عند التمرير */
+    background-color: #f9f9f9;
+    /* تغيير لون الخلفية عند التمرير */
 }
 
 .course-title {
-    font-size: 1.2em; /* تقليل حجم العنوان ليتناسب مع الدائرة */
+    font-size: 1.2em;
+    /* تقليل حجم العنوان ليتناسب مع الدائرة */
     color: #333;
-    text-align: center; /* محاذاة النص في الوسط */
+    text-align: center;
+    /* محاذاة النص في الوسط */
 }
 
 .course-description {
     color: #666;
-    text-align: center; /* محاذاة النص في الوسط */
-    font-size: 0.9em; /* تقليل حجم الوصف ليتناسب مع الدائرة */
+    text-align: center;
+    /* محاذاة النص في الوسط */
+    font-size: 0.9em;
+    /* تقليل حجم الوصف ليتناسب مع الدائرة */
 }
 
 
@@ -355,115 +373,52 @@ footer {
 }
 
 
- .episode {
-            background-color: #ffffff;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-        }
+.episode {
+    background-color: #ffffff;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
 
-        .episode:hover {
-            transform: scale(1.02);
-        }
+.episode:hover {
+    transform: scale(1.02);
+}
 
-        .episode-title {
-            font-size: 1.5em;
-            color: #333;
-        }
+.episode-title {
+    font-size: 1.5em;
+    color: #333;
+}
 
-        .episode-description {
-            color: #666;
-            margin: 10px 0;
-        }
+.episode-description {
+    color: #666;
+    margin: 10px 0;
+}
 
-        .audio {
-            margin: 10px 0;
-        }
+.audio {
+    margin: 10px 0;
+}
 
-        .image {
-            max-width: 100%;
-            border-radius: 8px;
-            margin: 10px 0;
-        }
+.image {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 10px 0;
+}
 
-        .back-button {
-            display: block;
-            margin: 30px auto;
-            text-align: center;
-            font-size: 1.2em;
-            color: rgba(203, 155, 243, 1); ;
-            background-color: #303030;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
+.back-button {
+    display: block;
+    margin: 30px auto;
+    text-align: center;
+    font-size: 1.2em;
+    color: rgba(203, 155, 243, 1);
+    ;
+    background-color: #303030;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
 
-        .back-button:hover {
-            background-color: #000000;
-        }
-
-
-
-
-
-     
-       
-
-        .course-title {
-            text-align: center;
-            font-size: 2.5em;
-            color: #333;
-            margin-bottom: 30px;
-        }
-
-        .episode {
-            background-color: #ffffff;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-        }
-
-        .episode:hover {
-            transform: scale(1.02);
-        }
-
-        .episode-title {
-            font-size: 1.5em;
-            color: #333;
-        }
-
-        .episode-description {
-            color: #666;
-            margin: 10px 0;
-        }
-
-        .audio {
-            margin: 10px 0;
-        }
-
-        .image {
-            max-width: 100%;
-            border-radius: 8px;
-            margin: 10px 0;
-        }
-
-        .back-button {
-            display: block;
-            margin: 30px auto;
-            text-align: center;
-            font-size: 1.2em;
-            color: white;
-            background-color: #161616;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        .back-button:hover {
-            background-color: #000000;
-        }
- 
+.back-button:hover {
+    background-color: #000000;
+}
