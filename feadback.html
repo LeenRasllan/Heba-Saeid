@@ -204,46 +204,53 @@ section {
 
 
 
-    <h1>كيف كانت رحلتك؟ زدنا بتعليقك</h1>
-    <textarea id="feedbackInput" placeholder="اكتب تعليقك هنا..."></textarea><br>
+    <textarea id="feedbackInput" placeholder="اكتب فيدباكك هنا..."></textarea><br>
     <button onclick="addFeedback()">إضافة التعليق</button>
 
     <h2>التعليقات السابقة:</h2>
     <ul id="feedbackList"></ul>
 
     <script>
+        // إرسال التعليق إلى السيرفر
         function addFeedback() {
             var feedbackInput = document.getElementById("feedbackInput").value;
             if (feedbackInput) {
-                // الحصول على الفيدباك من localStorage
-                var feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
-                feedbacks.push(feedbackInput);
-                localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
-                document.getElementById("feedbackInput").value = ""; // مسح المدخل
-                fetchFeedback(); // تحديث القائمة
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "submit_feedback.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        document.getElementById("feedbackInput").value = "";  // مسح المدخل
+                        fetchFeedback();  // تحديث القائمة بعد الإضافة
+                    }
+                };
+                xhr.send("feedback=" + encodeURIComponent(feedbackInput));
             } else {
                 alert("الرجاء كتابة فيدباك!");
             }
         }
 
+        // جلب التعليقات من السيرفر
         function fetchFeedback() {
-            var feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
-            var feedbackList = document.getElementById("feedbackList");
-            feedbackList.innerHTML = ""; // مسح القائمة القديمة
-            feedbacks.forEach(function(feedback) {
-                var li = document.createElement("li");
-                li.textContent = feedback;
-                feedbackList.appendChild(li);
-            });
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "get_feedback.php", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var feedbacks = JSON.parse(xhr.responseText);
+                    var feedbackList = document.getElementById("feedbackList");
+                    feedbackList.innerHTML = ""; // مسح القائمة القديمة
+                    feedbacks.forEach(function(feedback) {
+                        var li = document.createElement("li");
+                        li.textContent = feedback;
+                        feedbackList.appendChild(li);
+                    });
+                }
+            };
+            xhr.send();
         }
 
         // جلب الفيدباك عند تحميل الصفحة
         window.onload = fetchFeedback;
-
-        function toggleMenu() {
-        var dropdown = document.getElementById('dropdownMenu');
-        dropdown.classList.toggle('active');
-    }
     </script>
 </body>
 </html>
