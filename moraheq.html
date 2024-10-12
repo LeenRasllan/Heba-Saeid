@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كورس التعامل مع المراهقين</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMi1Tf0G5Mxq4xA+NEiYoXo9HquZJ4OswYJcO" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: rgba(152, 150, 150, 0.493);
+            background-image: url('back.png'); /* تأكد من أن اسم الصورة والمسار صحيح */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        header {
+            background-color: #ffffff00;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 40px 20px;
+        }
+        header h1 {
+            font-size: 2.5em;
+        }
+        header p {
+            font-size: 1.2em;
+        }
+        section {
+            padding: 40px 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            background-color: rgba(29, 29, 29, 0.364);
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        section h2 {
+            color: #cb9bf3;
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            font-size: 1.2em;
+            margin: 10px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+        ul li:before {
+            content: '✔️';
+            position: absolute;
+            left: 0;
+            color: #cb9bf3;
+        }
+        .icon-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .icon-section div {
+            text-align: center;
+            margin: 10px;
+        }
+        .icon-section div img {
+            width: 100px;
+            height: 100px;
+        }
+        .topics-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .topic-box {
+            padding: 20px;
+            border: 2px solid #cb9bf3;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .topic-box h3 {
+            color: #cb9bf3;
+            margin-bottom: 15px;
+        }
+        .listen-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #cb9bf3;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .conclusion {
+            text-align: center;
+            padding: 20px;
+            background-color: #2e2d2e6e;
+            color: white;
+            border-radius: 8px;
+        }
+        .conclusion h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .conclusion p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>كورس التعامل مع المراهقين</h1>
+        <p>نهج شامل ومتكامل لفهم المراهقين والتواصل معهم بشكل أفضل</p>
+    </header>
+
+    <!-- Course Features Section -->
+    <section>
+        <h2>مميزات الكورس</h2>
+        <ul>
+            <li>يقدم نهجاً شاملاً ومتكاملاً للتعامل مع المراهقين، يتضمن الجوانب النفسية، السلوكية، والاجتماعية.</li>
+            <li>يعتمد على أحدث الدراسات في مجال التربية وعلم النفس، مما يضمن فاعلية الطرق المقدمة.</li>
+            <li>يوفر حلولاً عملية وتطبيقية تناسب مختلف المواقف والتحديات التي قد تواجهها الأسر مع أبنائها.</li>
+            <li>يركز على تعزيز العلاقة بين الأهل وأبنائهم وبناء جسر من التواصل الفعال.</li>
+            <li>يطرح طرقاً متنوعة للتعامل مع المشاكل الشائعة، مثل العناد، العصبية، والعزلة.</li>
+        </ul>
+    </section>
+
+    <!-- Who is This Course For Section -->
+    <section>
+        <h2>لمن هذا الكورس؟</h2>
+        <div class="icon-section">
+            <div>
+                <img src="fg.png" alt="Parents Icon">
+                <p>للآباء والأمهات</p>
+            </div>
+            <div>
+                <img src="tg.png" alt="Teachers Icon">
+                <p>للمعلمين والمربين</p>
+            </div>
+            <div>
+                <img src="gg.png" alt="Youth Workers Icon">
+                <p>لمن يتعامل مع الشباب</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Topics Section -->
+    <section>
+        <h2>المحاور الرئيسية التي احتوى عليها الكورس</h2>
+        <div class="topics-section">
+            <div class="topic-box">
+                <h3>فهم طبيعة مرحلة المراهقة</h3>
+                <p>ما هي التغيرات النفسية والجسدية التي يمر بها المراهقون؟</p>
+               
+                    <audio controls>
+                        <source src="1/1.mp3" type="audio/mp3">
+                        متصفحك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="1/2.mp3" type="audio/mp3">
+                        متصفحك لا يدعم تشغيل الصوت.
+                    </audio>
+                
+            </div>
+            <div class="topic-box">
+                <h3>أسباب السلوكيات السلبية</h3>
+                <p>كيفية التعامل مع السلوكيات مثل الكذب والعناد والعصبية.</p>
+                <audio controls>
+                    <source src="2/3.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="2/4.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="2/11.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="2/12.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="2/13.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="2/14.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="2/16.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <div class="topic-box">
+                <h3>التواصل الفعّال مع المراهقين</h3>
+                <p>استراتيجيات بناء حوار صحي وتقنيات الاستماع الفعّال.</p>
+                <audio controls>
+                    <source src="3/5.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio> <audio controls>
+                    <source src="3/6.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio> <audio controls>
+                    <source src="3/7.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio> <audio controls>
+                    <source src="3/8.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio> <audio controls>
+                    <source src="3/9.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio> <audio controls>
+                    <source src="3/10.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio> <audio controls>
+                    <source src="3/17.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio> <audio controls>
+                    <source src="3/18.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <div class="topic-box">
+                <h3>تحديد الحدود والقواعد</h3>
+                <p>كيفية وضع القواعد ومتابعتها دون التصعيد.</p>
+                <audio controls>
+                    <source src="4/15.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio> <audio controls>
+                    <source src="4/19.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio> <audio controls>
+                    <source src="4/20.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio> <audio controls>
+                    <source src="4/21.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio> <audio controls>
+                    <source src="4/22.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio> <audio controls>
+                    <source src="4/23.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio> <audio controls>
+                    <source src="4/24.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio> <audio controls>
+                    <source src="4/25.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+           
+        </div>
+    </section>
+
+    <!-- Conclusion Section -->
+    <section class="conclusion">
+        <h2>خاتمة كورس "فن التعامل مع المراهقين"</h2>
+        <p>
+            في نهاية هذا الكورس، نأمل أن تكونوا قد استفدتم من المعلومات والأدوات المقدمة لمساعدتكم في التعامل مع تحديات مرحلة المراهقة، تلك المرحلة التي تشكل نقطة تحول كبيرة في حياة أبنائنا. 
+            إن المراهقة ليست مجرد فترة من التغيرات، بل هي فرصة ذهبية للأهل لتعميق علاقتهم بأبنائهم وتوجيههم نحو مستقبل مشرق. بتطبيق النصائح والاستراتيجيات التي تمت مناقشتها، 
+            يمكنكم بناء جسر من الثقة والتفاهم مع أبنائكم، ما يضمن لهم دعماً قوياً ويسهم في تطورهم الشخصي والنفسي.
+        </p>
+    </section>
+    <script src="https://kit.fontawesome.com/c9d159e059.js" crossorigin="anonymous"></script>
+</body>
+</html>
