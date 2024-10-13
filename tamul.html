@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كورس فن التعامل مع الآخرين</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMi1Tf0G5Mxq4xA+NEiYoXo9HquZJ4OswYJcO" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: rgba(152, 150, 150, 0.493);
+            background-image: url('back.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        header {
+            background-color: #ffffff00;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+        }
+
+        section {
+            padding: 40px 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            background-color: rgba(29, 29, 29, 0.364);
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            color: #cb9bf3;
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 1.2em;
+            margin: 10px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        ul li:before {
+            content: '✔️';
+            position: absolute;
+            left: 0;
+            color: #cb9bf3;
+        }
+
+        .icon-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .icon-section div {
+            text-align: center;
+            margin: 10px;
+        }
+
+        .icon-section div img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .topics-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .topic-box {
+            padding: 20px;
+            border: 2px solid #cb9bf3;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .topic-box h3 {
+            color: #cb9bf3;
+            margin-bottom: 15px;
+        }
+
+        .listen-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #cb9bf3;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .conclusion {
+            text-align: center;
+            padding: 20px;
+            background-color: #2e2d2e6e;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .conclusion h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .conclusion p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .password-modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            visibility: hidden;
+        }
+
+        .password-modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .password-input {
+            width: 80%;
+            padding: 10px;
+            font-size: 1.2em;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .password-btn {
+            padding: 10px 20px;
+            background-color: #cb9bf3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .password-btn:hover {
+            background-color: #a68be0;
+        }
+
+        .error-msg {
+            color: red;
+            font-size: 1.1em;
+        }
+        .image {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .back-button {
+            display: block;
+            text-align: center;
+            padding: 20px;
+            font-size: medium;
+            background-color: #333;
+            color: #cb9bf3;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .back-button:hover {
+            background-color: #cb9bf3;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="password-modal" id="passwordModal">
+        <div class="password-modal-content">
+            <h2>أدخل كلمة المرور للدخول</h2>
+            <input type="password" id="passwordInput" class="password-input" placeholder="كلمة المرور">
+            <button class="password-btn" onclick="checkPassword()">دخول</button>
+            <p class="error-msg" id="errorMessage"></p>
+        </div>
+    </div>
+
+
+
+    <!-- Header Section -->
+    <header>
+        <h1>كورس فن التعامل مع الآخرين</h1>
+        <p>دورة شاملة تعلمك فنون التواصل والتعامل الفعّال مع الآخرين.</p>
+    </header>
+
+    <!-- Course Features Section -->
+    <section>
+        <h2>مميزات الكورس</h2>
+        <ul>
+            <li>يقدم مفاهيم حديثة في علم التواصل وفن التعامل مع الآخرين.</li>
+            <li>يشمل جوانب التعامل مع مختلف الفئات: الأصدقاء، الأسرة، والزملاء.</li>
+            <li>يطرح استراتيجيات فعالة لبناء علاقات قوية قائمة على الاحترام المتبادل.</li>
+        </ul>
+    </section>
+
+    <!-- Who is This Course For Section -->
+    <section>
+        <h2>لمن هذا الكورس؟</h2>
+        <div class="icon-section">
+            <div>
+                <img src="h.png" alt="For Parents Icon">
+                <p>كل من يسعى إلى تحسين علاقاته الشخصية والاجتماعية: سواء في الحياة اليومية أو في العمل، لتعزيز مهارات
+                    التواصل والاحترام المتبادل.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Main Topics Section -->
+    <section>
+        <h2>محتوى للكورس</h2>
+        <div class="topics-section">
+            <div class="topic-box">
+                <h3>المحاضرة الأولى</h3>
+                <img src="b/1.png" alt="صورة المقدمة" class="image">
+                <audio controls>
+                    <source src="f1/1.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f1/2.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f1/3.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f1/4.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f1/5.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f1/6.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f1/7.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f1/8.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f1/9.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f1/10.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f1/11.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f1/12.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f1/13.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+
+            <div class="topic-box">
+                <h3>المحاضرة الثانية</h3>
+                <img src="b/2.png" alt="صورة المقدمة" class="image">
+                <audio controls>
+                    <source src="f2/1.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f2/2.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f2/3.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f2/4.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f2/5.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f2/6.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f2/7.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f2/8.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f2/9.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f2/10.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+
+
+
+            </div>
+            <div class="topic-box">
+                <h3>المحاضرة الثالثة</h3>
+                <img src="b/3.png" alt="صورة المقدمة" class="image">
+                <audio controls>
+                    <source src="f3/1.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f3/2.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f3/3.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f3/4.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f3/5.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f3/6.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f3/7.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f3/8.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f3/9.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f3/10.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f3/11.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f3/12.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+            </div>
+            <div class="topic-box">
+                <h3>المحاضرة الرابعة </h3>
+                <img src="b/4.png" alt="صورة المقدمة" class="image">
+                <audio controls>
+                    <source src="f4/1.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f4/2.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="f4/3.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f4/4.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="f4/5.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f4/6.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="f4/7.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+
+                <audio controls>
+                    <source src="f4/8.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+            <div class="topic-box">
+                <h3>المحاضرة الخامسة</h3>
+                <img src="b/5.png" alt="صورة المقدمة" class="image">
+                <audio controls>
+                    <source src="f5/1.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="f5/2.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="f5/3.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="f5/4.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="f5/5.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="f5/6.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="f5/7.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="f5/8.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="f5/9.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="f5/10.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+                <audio controls>
+                    <source src="f5/11.ogg" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل الصوت.
+                </audio>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Conclusion Section -->
+    <section class="conclusion">
+        <h2>في ختام الكورس</h2>
+        <p>بعد إكمال هذه الدورة، ستكون قادراً على التعامل مع الآخرين بفهم وذكاء، وبناء علاقات قائمة على الاحترام
+            المتبادل والتفاهم العميق. ابدأ الآن في تطبيق هذه المهارات في حياتك اليومية ولاحظ التغيير الإيجابي في
+            علاقاتك!</p>
+    </section>
+
+
+    <a href="index.html" class="back-button">العودة إلى الصفحة الرئيسية</a>
+
+    <script>
+        function checkPassword() {
+            var input = document.getElementById('passwordInput').value;
+            var errorMessage = document.getElementById('errorMessage');
+
+            // Example: Replace 'yourpassword' with your desired password
+            if (input === '4567') {
+                document.getElementById('passwordModal').style.visibility = 'hidden';
+            } else {
+                errorMessage.textContent = 'كلمة المرور غير صحيحة. حاول مرة أخرى.';
+            }
+        }
+
+        window.onload = function () {
+            document.getElementById('passwordModal').style.visibility = 'visible';
+        };
+    </script>
+
+</body>
+
+</html>
