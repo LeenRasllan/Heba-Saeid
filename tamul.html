@@ -7,9 +7,6 @@
     <title>كورس فن التعامل مع الآخرين</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMi1Tf0G5Mxq4xA+NEiYoXo9HquZJ4OswYJcO" crossorigin="anonymous">
-
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -24,7 +21,7 @@
 
         header {
             background-color: #ffffff00;
-            color: rgb(255, 255, 255);
+            color: #fff;
             text-align: center;
             padding: 40px 20px;
         }
@@ -182,11 +179,13 @@
             color: red;
             font-size: 1.1em;
         }
+
         .image {
             max-width: 100%;
             border-radius: 8px;
             margin: 10px 0;
         }
+
         .back-button {
             display: block;
             text-align: center;
@@ -201,6 +200,47 @@
         .back-button:hover {
             background-color: #cb9bf3;
             color: black;
+        }
+
+        .features {
+            background-color: #222;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 50px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        .features h2 {
+            font-size: 2.5em;
+            text-align: center;
+            color: #cb9bf3;
+            margin-bottom: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-item i {
+            font-size: 2em;
+            color: #cb9bf3;
+            margin-right: 15px;
+        }
+
+        .feature-text {
+            font-size: 1.2em;
+            color: white;
+        }
+
+        .feature-text strong {
+            color: #cb9bf3;
         }
     </style>
 </head>
@@ -225,15 +265,37 @@
         <p>دورة شاملة تعلمك فنون التواصل والتعامل الفعّال مع الآخرين.</p>
     </header>
 
-    <!-- Course Features Section -->
-    <section>
+    <!-- Course Features Section  
+     ه
+                 -->
+      <!-- Course Features Section -->
+    <div class="features">
         <h2>مميزات الكورس</h2>
-        <ul>
-            <li>يقدم مفاهيم حديثة في علم التواصل وفن التعامل مع الآخرين.</li>
-            <li>يشمل جوانب التعامل مع مختلف الفئات: الأصدقاء، الأسرة، والزملاء.</li>
-            <li>يطرح استراتيجيات فعالة لبناء علاقات قوية قائمة على الاحترام المتبادل.</li>
-        </ul>
-    </section>
+
+        <div class="feature-item" data-aos="fade-up" data-aos-duration="1500">
+            <i class="fas fa-check-circle"></i>
+            <div class="feature-text"><strong>تمارين عملية:</strong> هتقدر تطبق كل حاجة بشكل عملي وتلمس التغيير بنفسك.</div>
+        </div>
+
+        <div class="feature-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
+            <i class="fas fa-users"></i>
+            <div class="feature-text"><strong>قصص نجاح حقيقية:</strong> هتشوف ناس كتير قدروا يوصلوا لفهم كامل لذاتهم ولمن حولهم.</div>
+        </div>
+
+        <div class="feature-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+            <i class="fas fa-user"></i>
+            <div class="feature-text"><strong>إرشادات شخصية:</strong> هتاخد نصايح محددة لحالاتك الشخصية.</div>
+        </div>
+
+        <div class="feature-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+            <i class="fas fa-hand-holding-heart"></i>
+            <div class="feature-text"><strong>تحفيز:</strong> انضمامك للكورس ده هو الخطوة الصح الأولى في رحلتك لتحقيق
+                الراحة النفسية. برافو عليك إنك قررت تاخد وقت وتستثمر في نفسك عشان تعيش حياة أكتر توازن وراحة.</div>
+        </div>
+    </div>
+
+
+
 
     <!-- Who is This Course For Section -->
     <section>
@@ -563,6 +625,10 @@
         };
     </script>
 
+ <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 </body>
 
 </html>
