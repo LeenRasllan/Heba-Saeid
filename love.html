@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كورس الحب الحقيقي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMi1Tf0G5Mxq4xA+NEiYoXo9HquZJ4OswYJcO" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(152, 150, 150, 0.493);
+            background-image: url('back.png'); /* تأكد من أن اسم الصورة والمسار صحيح */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+
+        header {
+            background-color: #383838;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: rgb(218, 149, 248);
+            font-size: 2.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .module {
+            background-color: rgba(32, 32, 32, 0.541);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgb(206, 147, 251);
+            margin-bottom: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .module img {
+            width:100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .module-content h2 {
+            color: #cb9bf3;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .module-content p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .module-content audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+
+        .features {
+            background-color: #222;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 50px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        .features h2 {
+            font-size: 2.5em;
+            text-align: center;
+            color: #cb9bf3;
+            margin-bottom: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-item i {
+            font-size: 2em;
+            color: #cb9bf3;
+            margin-right: 15px;
+        }
+
+        .feature-text {
+            font-size: 1.2em;
+            color: white;
+        }
+
+        .feature-text strong {
+            color: #cb9bf3;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .conclusion {
+            text-align: center;
+            padding: 20px;
+            background-color: #2e2d2e6e;
+            color: white;
+            border-radius: 8px;
+        }
+        .conclusion h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .conclusion p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+.password-modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        visibility: hidden;  /* إخفاء النافذة في البداية */
+    }
+    .password-modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+    .password-input {
+        width: 80%;
+        padding: 10px;
+        font-size: 1.2em;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .password-btn {
+        padding: 10px 20px;
+        background-color: #cb9bf3;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.2em;
+        cursor: pointer;
+    }
+    .password-btn:hover {
+        background-color: #a68be0;
+    }
+    .error-msg {
+        color: red;
+        font-size: 1.1em;
+    }
+    .back-button {
+            display: block;
+            text-align: center;
+            padding: 20px;
+            font-size: medium;
+            background-color: #333;
+            color: #cb9bf3;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .back-button:hover {
+            background-color: #cb9bf3;
+            color: black;
+        }
+        .image {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="password-modal" id="passwordModal">
+        <div class="password-modal-content">
+            <h2>أدخل كلمة المرور للدخول</h2>
+            <input type="password" id="passwordInput" class="password-input" placeholder="كلمة المرور">
+            <button class="password-btn" onclick="checkPassword()">دخول</button>
+            <p class="error-msg" id="errorMessage"></p>
+        </div>
+    </div>
+
+
+
+
+    <header>
+        <h1>كورس فن الحب الواعي</h1>
+    </header>
+
+
+    <!-- Course Features Section -->
+    <div class="features">
+        <h2>مميزات الكورس</h2>
+
+        <div class="feature-item" data-aos="fade-up" data-aos-duration="1500">
+            <i class="fas fa-check-circle" style="margin-left: 7px;"></i>
+            <div class="feature-text"><strong>تمارين عملية    :  </strong> هتقدر تطبق كل حاجة بشكل عملي وتلمس التغيير بنفسك.
+            </div>
+        </div>
+
+        <div class="feature-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
+            <i class="fas fa-users" style="margin-left: 7px;"></i>
+            <div class="feature-text"><strong>قصص نجاح حقيقية:</strong> هتشوف ناس كتير قدرو يوصلوا لحل لكتير من المشاكل
+                الصعبة
+                باستخدام الخطوات دي.</div>
+        </div>
+
+        <div class="feature-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+            <i class="fas fa-user" style="margin-left: 7px;"></i>
+            <div class="feature-text"><strong>إرشادات شخصية:</strong> هتاخد نصايح محددة لحالاتك الشخصية 
+             عشان كل حاجة
+                تبقى مناسبة ليك.</div>
+        </div>
+
+        <div class="feature-item" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+            <i class="fas fa-hand-holding-heart" style="margin-left: 7px;"></i>
+            <div class="feature-text"><strong>تحفيز:</strong> انضمامك للكورس ده هو الخطوة الصح الأولى في رحلتك لتحقيق
+                التفاهم السليم بينك وبين ابنك . برافو عليك إنك قررت تاخد وقت وتستثمر في نفسك عشان تعيش مع ابنك حياة أكتر
+                توازن وتفاهم وراحة.</div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="module">
+            <img src="lo/1.png" alt="موضوع المحور الأول">
+            <div class="module-content">
+                <h2>المحور الأول</h2>
+                <audio controls>
+                    <source src="love/1/1.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/1/2.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/1/3.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/1/4.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/1/5.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/1/6.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/1/7.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+            </div>
+        </div>
+
+        <!-- محور 2 -->
+        <div class="module">
+            <img src="lo/2.png" alt="موضوع المحور الثاني">
+            <div class="module-content">
+                <h2>المحور الثاني</h2>
+                <audio controls>
+                    <source src="love/2/1.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/2/2.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/2/3.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                
+               
+            </div>
+        </div>
+
+
+
+
+        <!-- محور 3 -->
+        <div class="module">
+            <img src="lo/3.png" alt="موضوع المحور الثالث">
+            <div class="module-content">
+                <h2>المحور الثالث</h2>
+                <audio controls>
+                    <source src="love/3/1.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/3/2.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/3/3.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/3/4.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/3/5.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+               
+            </div>
+        </div>
+
+        <!-- محور 4 -->
+        <div class="module">
+            <img src="lo/4.png" alt="موضوع المحور الرابع">
+            <div class="module-content">
+                <h2>المحور الرابع</h2>
+                <audio controls>
+                    <source src="love/4/1.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/4/2.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/4/3.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/4/4.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/4/5.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/4/6.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/4/7.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/4/8.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/4/9.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/4/10.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+            </div>
+        </div>
+
+        <!-- محور 5 -->
+        <div class="module">
+            <img src="lo/5.png" alt="موضوع المحور الخامس">
+            <div class="module-content">
+                <h2>المحور الخامس</h2>
+                <audio controls>
+                    <source src="love/5/1.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/5/2.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/5/3.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/5/4.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/5/5.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/5/6.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/5/7.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+            </div>
+        </div>
+
+        <!-- محور 6 -->
+        <div class="module">
+            <img src="lo/6.png" alt="موضوع المحور السادس">
+            <div class="module-content">
+                <h2>المحور السادس</h2>
+                <audio controls>
+                    <source src="love/6/1.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/6/2.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/6/3.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/6/4.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/6/5.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/6/6.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                
+            </div>
+        </div>
+
+        <!-- محور 7 -->
+        <div class="module">
+            <img src="lo/7.png" alt="موضوع المحور السابع">
+            <div class="module-content">
+                <h2>المحور السابع</h2>
+                <audio controls>
+                    <source src="love/7/1.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/7/2.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/7/3.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/7/4.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/7/5.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/7/6.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                
+            </div>
+        </div>
+
+        <!-- محور 8 -->
+        <div class="module">
+            <img src="lo/8.png" alt="موضوع المحور الثامن">
+            <div class="module-content">
+                <h2>المحور الثامن</h2>
+                <audio controls>
+                    <source src="love/8/1.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/8/2.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/8/3.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/8/4.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/8/5.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/8/6.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                
+                <audio controls>
+                    <source src="love/8/8.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/8/9.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+            </div>
+        </div>
+
+        <!-- محور 9 -->
+        <div class="module">
+            <img src="lo/9.png" alt="موضوع المحور التاسع">
+            <div class="module-content">
+                <h2>المحور التاسع</h2>
+                <audio controls>
+                    <source src="love/9/1.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/9/2.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/9/3.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/9/4.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                
+            </div>
+        </div>
+
+        <!-- محور 10 -->
+        <div class="module">
+            <img src="lo/10.png" alt="موضوع المحور العاشر">
+            <div class="module-content">
+                <h2>المحور العاشر</h2>
+                <audio controls>
+                    <source src="love/10/1.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/10/2.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/10/3.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/10/4.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/10/5.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+                <audio controls>
+                    <source src="love/10/6.mp3" type="audio/mpeg">
+                    المتصفح لا يدعم تشغيل الملفات الصوتية.
+                </audio>
+               
+            </div>
+        </div>
+
+    </div>
+
+        <!-- Conclusion Section -->
+        <section class="conclusion">
+            <h2>ختام رحلة فهم الحب الواعي</h2>
+            <p>
+                الحب ليس مجرد مشاعر لحظية، بل هو التزام ورحلة تنمو مع الفهم والتقدير المتبادل. هو فن يحتاج إلى تعلم وممارسة، وأنتِ اليوم أصبحتِ أكثر وعيًا بما يلزم لبناء علاقة صحية ومستدامة. كل محور ناقشناه كان خطوة نحو الارتقاء بعلاقاتنا إلى مستوى أعمق من الحب الصادق والواعي، حب يدعم ويساند في أوقات الفرح والتحدي على حد سواء.
+
+                فكوني دومًا على دراية بأن الحب الواعي يبدأ بفهم الذات، ويتطلب الصبر، والمرونة، والرغبة المستمرة في النمو والتعلم. احتفظي بالقيم والمبادئ التي اكتسبتها هنا، واستثمريها في حياتك اليومية وعلاقاتك القادمة. الحب الواعي هو طريق لتحقيق السلام الداخلي والرضا في علاقتك مع نفسك ومع الآخرين.            </p>
+
+            <a href="index.html" class="back-button">العودة إلى الصفحة الرئيسية</a>
+        </section>
+        <script src="https://kit.fontawesome.com/c9d159e059.js" crossorigin="anonymous"></script>
+
+        <script>
+            const PASSWORD = "123";  // Replace this with your actual password
+
+            window.onload = function () {
+                // جعل النافذة مرئية عند تحميل الصفحة
+                document.getElementById("passwordModal").style.visibility = "visible";
+            };
+
+            function checkPassword() {
+                const inputPassword = document.getElementById("passwordInput").value;
+                const errorMessage = document.getElementById("errorMessage");
+
+                if (inputPassword === PASSWORD) {
+                    document.getElementById("passwordModal").style.visibility = "hidden"; // إخفاء النافذة بعد إدخال كلمة المرور الصحيحة
+                } else {
+                    errorMessage.textContent = "كلمة المرور غير صحيحة";
+                }
+            }
+        </script>
+
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
