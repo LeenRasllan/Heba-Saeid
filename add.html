@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <title>كورس تكوين العادة الإيجابية والتخلص من العادة السلبية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background-image: url('back.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-right: 15%;
+            padding: 0;
+            direction: rtl;
+            /* النص من اليمين لليسار */
+            text-align: right;
+            /* محاذاة النصوص إلى اليمين */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #cb9bf3;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .section {
+            padding: 20px 0;
+        }
+
+        .section h2 {
+            margin-bottom: 15px;
+        }
+
+        .features {
+            background-color: rgba(0, 0, 0, 0.7);
+            /* خلفية سوداء بشفافية خفيفة */
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .feature-item i {
+            color: #cb9bf3;
+            font-size: 24px;
+            margin-left: 10px;
+            /* تعديل لتناسب الاتجاه من اليمين لليسار */
+        }
+
+        .feature-text {
+            font-size: 16px;
+        }
+
+        .modules {
+            padding: 20px 0;
+        }
+
+        .module {
+            background-color: rgba(203, 155, 243, 0.1);
+            padding: 15px;
+            border: 2px solid #cb9bf3;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .module h3 {
+            color: #cb9bf3;
+            margin-bottom: 10px;
+        }
+
+        .module p {
+            margin: 10px 0;
+        }
+
+        .module-audio {
+            
+            width: 100%;
+            margin-top: 30px;
+        
+        }
+
+        .module-audio img {
+            width: auto;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        audio {
+            width: 100%;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #cb9bf3;
+            color: white;
+            border-radius: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .module-audio {
+                flex-direction: column;
+            }
+
+            .module-audio img {
+                width: 100%;
+            }
+
+
+            .course-container {
+                background-color: rgba(0, 0, 0, 0.7);
+                padding: 30px;
+                margin: 50px auto;
+                max-width: 900px;
+                border-radius: 15px;
+            }
+
+            h1 {
+                text-align: center;
+                color: #cb9bf3;
+                font-size: 2.5em;
+            }
+
+            .course-section {
+                margin: 20px 0;
+            }
+
+            .course-section h2 {
+                color: #cb9bf3;
+                margin-bottom: 10px;
+                font-size: 1.8em;
+                border-bottom: 2px solid #cb9bf3;
+                padding-bottom: 10px;
+            }
+
+            .course-section ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .course-section ul li {
+                background-color: rgba(203, 155, 243, 0.2);
+                padding: 15px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(214, 167, 249, 0.938);
+                transition: background-color 0.3s ease-in-out;
+            }
+
+            .course-section ul li:hover {
+                background-color: rgba(203, 155, 243, 0.5);
+            }
+
+            .course-section ul li h3 {
+                margin: 0;
+                font-size: 1.3em;
+                color: #fff;
+            }
+
+            .course-section ul li p {
+                margin-top: 5px;
+                line-height: 1.8;
+                color: #fff;
+            }
+        }
+
+        .password-modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        visibility: hidden;  /* إخفاء النافذة في البداية */
+    }
+    .password-modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+    .password-input {
+        width: 80%;
+        padding: 10px;
+        font-size: 1.2em;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .password-btn {
+        padding: 10px 20px;
+        background-color: #cb9bf3;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.2em;
+        cursor: pointer;
+    }
+    .password-btn:hover {
+        background-color: #a68be0;
+    }
+    .error-msg {
+        color: red;
+        font-size: 1.1em;
+    }
+    .back-button {
+            display: block;
+            text-align: center;
+            padding: 20px;
+            font-size: medium;
+            background-color: #333;
+            color: #cb9bf3;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .back-button:hover {
+            background-color: #cb9bf3;
+            color: black;
+        }
+        .image {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="password-modal" id="passwordModal">
+        <div class="password-modal-content">
+            <h2>أدخل كلمة المرور للدخول</h2>
+            <input type="password" id="passwordInput" class="password-input" placeholder="كلمة المرور">
+            <button class="password-btn" onclick="checkPassword()">دخول</button>
+            <p class="error-msg" id="errorMessage"></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- مقدمة الكورس -->
+        <div class="intro">
+            <h1>كورس تكوين العادة الإيجابية والتخلص من العادة السلبية</h1>
+            <p>اهلاً بكم في كورسنا المتخصص في اكتساب العادات الإيجابية والتخلص من العادات السلبية بأسلوب عملي وفعال.</p>
+        </div>
+
+        <!-- مميزات الكورس -->
+        <div class="features">
+            <h2>مميزات الكورس</h2>
+
+            <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <div class="feature-text"><strong>تمارين عملية:</strong> هتقدر تطبق كل حاجة بشكل عملي وتلمس التغيير
+                    بنفسك.</div>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-users"></i>
+                <div class="feature-text"><strong>قصص نجاح حقيقية:</strong> هتشوف ناس كتير قدرو يوصلوا لحل لكتير من
+                    المشاكل الصعبة باستخدام الخطوات دي.</div>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-user"></i>
+                <div class="feature-text"><strong>إرشادات شخصية:</strong> هتاخد نصايح محددة لحالاتك الشخصية عشان كل حاجة
+                    تبقى مناسبة ليك.</div>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-hand-holding-heart"></i>
+                <div class="feature-text"><strong>تحفيز:</strong> انضمامك للكورس ده هو الخطوة الصح الأولى في رحلتك
+                    لتحقيق النجاح والاستمرار في تكوين العادات الإيجابية.</div>
+            </div>
+        </div>
+
+        <!-- المحاور -->
+        <div class="modules">
+            <h2>المحاور</h2>
+
+            <!-- المحور الأول -->
+            <div class="module">
+                <h3>المحور الأول</h3>
+                <div class="module-audio">
+                    <img src="add/1.png" alt="مفهوم المحور الأول">
+                    <audio controls>
+                        <source src="add1/1.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add1/2.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add1/3.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add1/4.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add1/5.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio> <audio controls>
+                        <source src="add1/6.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                </div>
+            </div>
+
+            <!-- المحور الثاني -->
+            <div class="module">
+                <h3>المحور الثاني</h3>
+                <div class="module-audio">
+                    <img src="add/2.png" alt="مفهوم المحور الثاني">
+
+                    <audio controls>
+                        <source src="add2/1.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio><audio controls>
+                        <source src="add2/2.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio><audio controls>
+                        <source src="add2/3.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio><audio controls>
+                        <source src="add2/4.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                </div>
+            </div>
+
+            <!-- المحور الثالث -->
+            <div class="module">
+                <h3>المحور الثالث</h3>
+                <div class="module-audio">
+                    <img src="add/3.png" alt="مفهوم المحور الثالث">
+                    <audio controls>
+                        <source src="add3/1.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add3/2.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio> <audio controls>
+                        <source src="add3/3.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add3/4.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add3/5.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add3/6.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add3/7.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add3/8.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add3/9.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add3/10.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add3/11.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                </div>
+            </div>
+
+            <div class="module">
+                <h3>المحور الرابع</h3>
+                <div class="module-audio">
+                    <img src="add/4.png" alt="مفهوم المحور الرابع">
+                    <audio controls>
+                        <source src="add4/1.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add4/2.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio><audio controls>
+                        <source src="add4/3.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio><audio controls>
+                        <source src="add4/4.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio><audio controls>
+                        <source src="add4/5.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio><audio controls>
+                        <source src="add4/6.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <!-- المزيد من التسجيلات الصوتية حسب الحاجة -->
+                </div>
+            </div>
+
+            <div class="module">
+                <h3>المحور الخامس</h3>
+                <div class="module-audio">
+                    <img src="add/5.png" alt="مفهوم المحور الخامس">
+                    <audio controls>
+                        <source src="add5/1.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add5/2.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio><audio controls>
+                        <source src="add5/3.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio><audio controls>
+                        <source src="add5/4.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <!-- المزيد من التسجيلات الصوتية حسب الحاجة -->
+                </div>
+            </div>
+
+            <div class="module">
+                <h3>المحور السادس</h3>
+                <div class="module-audio">
+                    <img src="add/6.png" alt="مفهوم المحور السادس">
+                    <audio controls>
+                        <source src="add6/1.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add6/2.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio> <audio controls>
+                        <source src="add6/3.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio> <audio controls>
+                        <source src="add6/4.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio> <audio controls>
+                        <source src="add6/5.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio> <audio controls>
+                        <source src="add6/6.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <!-- المزيد من التسجيلات الصوتية حسب الحاجة -->
+                </div>
+            </div>
+
+            <div class="module">
+                <h3>المحور السابع</h3>
+                <div class="module-audio">
+                    <img src="add/7.png" alt="مفهوم المحور السابع">
+                    <audio controls>
+                        <source src="add7/1.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add7/2.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio> <audio controls>
+                        <source src="add7/3.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio> <audio controls>
+                        <source src="add7/4.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio> <audio controls>
+                        <source src="add7/5.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio> <audio controls>
+                        <source src="add7/6.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <!-- المزيد من التسجيلات الصوتية حسب الحاجة -->
+                </div>
+            </div>
+
+            
+            <div class="module">
+                <h3>المحور الثامن</h3>
+                <div class="module-audio">
+                    <img src="add/8.png" alt="مفهوم المحور الثامن">
+                    <audio controls>
+                        <source src="add8/1.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add8/2.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <audio controls>
+                        <source src="add8/3.ogg" type="audio/mpeg">
+                        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+                    </audio>
+                    <!-- المزيد من التسجيلات الصوتية حسب الحاجة -->
+                </div>
+            </div>
+
+
+            
+
+            <!-- استمر بإضافة المحاور -->
+        </div>
+        <div class="course-container">
+            <h1>محاور كورس تكوين العادات الإيجابية والتخلص من العادات السلبية</h1>
+
+            <div class="course-section">
+                <h2>المحاور:</h2>
+                <ul>
+                    <li>
+                        <h3>المحور الأول: فهم مفهوم العادة</h3>
+                        <p>تعريف العادات وكيف تتشكل. دورة العادة: الإشارة، الروتين، والمكافأة. الفرق بين العادات
+                            الإيجابية والسلبية.</p>
+                    </li>
+                    <li>
+                        <h3>المحور الثاني: التحليل الذاتي</h3>
+                        <p>تحديد العادات السلبية التي تؤثر على الحياة اليومية. تقييم تأثير العادات على الصحة النفسية
+                            والجسدية. فهم الأسباب والجذور وراء تلك العادات.</p>
+                    </li>
+                    <li>
+                        <h3>المحور الثالث: آليات تكوين العادات الإيجابية</h3>
+                        <p>كيفية اختيار العادات الإيجابية المناسبة للأهداف الشخصية. استخدام قوة التكرار والتدريج في
+                            تكوين عادات جديدة. تصميم بيئة محفزة لدعم العادات الجيدة.</p>
+                    </li>
+                    <li>
+                        <h3>المحور الرابع: استراتيجيات التخلص من العادات السلبية</h3>
+                        <p>كيفية التعرف على المحفزات المؤدية للعادات السلبية. تقنيات تغيير الروتين والمكافأة. التعامل مع
+                            الإغراءات وكيفية استبدال العادات السلبية بالإيجابية.</p>
+                    </li>
+                    <li>
+                        <h3>المحور الخامس: إدارة الوقت والالتزام</h3>
+                        <p>تنظيم الروتين اليومي لبناء عادات صحية. وضع أهداف قصيرة وبعيدة المدى للعادات. كيفية متابعة
+                            التقدم والاستمرارية في الالتزام بالعادات.</p>
+                    </li>
+                    <li>
+                        <h3>المحور السادس: التغلب على العقبات النفسية</h3>
+                        <p>مواجهة التسويف والمماطلة. التعامل مع الفشل والإحباط خلال عملية التغيير. المرونة والتكيف مع
+                            الظروف المتغيرة.</p>
+                    </li>
+                    <li>
+                        <h3>المحور السابع: استخدام تقنيات علم النفس والتخطيط</h3>
+                        <p>كيفية استخدام التصور الذهني لتعزيز العادات الجيدة. وضع خطط سلوكية وسيناريوهات للتعامل مع
+                            التحديات. أهمية الدعم الاجتماعي في بناء العادات.</p>
+                    </li>
+                    <li>
+                        <h3>المحور الثامن: المتابعة والتقييم المستمر</h3>
+                        <p>كيفية قياس نجاح تكوين العادات الإيجابية. إجراء تعديلات على الخطط إذا لزم الأمر. تعزيز
+                            الإنجازات الصغيرة لتحفيز الاستمرارية.</p>
+                    </li>
+                    <li>
+                        <h3>المحور التاسع: تطوير عقلية النمو</h3>
+                        <p>كيف تؤثر العادات الإيجابية على الشخصية والعقلية. الاستفادة من التعلم المستمر والنمو الشخصي.
+                        </p>
+                    </li>
+                    <li>
+                        <h3>المحور العاشر: خطة عملية مستدامة</h3>
+                        <p>وضع خطة قابلة للتنفيذ لبناء عادات طويلة الأمد. كيفية الحفاظ على العادات الإيجابية بعد انتهاء
+                            الكورس.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- خاتمة -->
+       
+    </div>
+
+
+
+    <section class="conclusion">
+       
+        <a href="index.html" class="back-button">العودة إلى الصفحة الرئيسية</a>
+    </section>
+    <script src="https://kit.fontawesome.com/c9d159e059.js" crossorigin="anonymous"></script>
+
+    <script>
+        const PASSWORD = "321";  // Replace this with your actual password
+
+        window.onload = function () {
+            // جعل النافذة مرئية عند تحميل الصفحة
+            document.getElementById("passwordModal").style.visibility = "visible";
+        };
+
+        function checkPassword() {
+            const inputPassword = document.getElementById("passwordInput").value;
+            const errorMessage = document.getElementById("errorMessage");
+
+            if (inputPassword === PASSWORD) {
+                document.getElementById("passwordModal").style.visibility = "hidden"; // إخفاء النافذة بعد إدخال كلمة المرور الصحيحة
+            } else {
+                errorMessage.textContent = "كلمة المرور غير صحيحة";
+            }
+        }
+    </script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+
+</html>
