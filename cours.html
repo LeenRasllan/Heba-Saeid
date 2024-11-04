@@ -3,57 +3,313 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="stylesheet" href="xdev.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>عناوين الكورسات</title>
     <link rel="stylesheet" href="style.css">
-    
+   <style>
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            margin-top: 60px; /* لتجنب تداخل مع النافبار الثابت */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: relative;
+            width: 80%;
+            max-width: 1000px;
+            height: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .item {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            background-position: center;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .item.active {
+            display: block;
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0,0,0,0.7);
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .content .name {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .content button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #cb9bf3;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .content button:hover {
+            background-color: #a07ad1;
+        }
+
+        /* تنسيق الأزرار */
+        .button {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            z-index: 2;
+        }
+
+        .button button {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(203, 155, 243, 0.8);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .button button:hover {
+            background-color: rgba(138, 107, 183, 0.8);
+        }
+
+        /* شريط الصور المصغرة */
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 50px;
+            border-radius: 8px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .thumbnail.active, .thumbnail:hover {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        /* استجابة التصميم للأجهزة المحمولة */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .links {
+                display: none;
+            }
+
+            .hamburg {
+                display: block;
+            }
+
+            .container {
+                height: auto;
+                padding: 20px 0;
+            }
+
+            .slide {
+                width: 90%;
+                height: 50vh;
+            }
+
+            .content {
+                padding: 10px;
+            }
+
+            .content .name {
+                font-size: 24px;
+            }
+
+            .content button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .button button {
+                width: 40px;
+                height: 40px;
+            }
+
+            .thumbnails {
+                margin-top: 15px;
+            }
+
+            .thumbnail {
+                width: 60px;
+                height: 40px;
+            }
+        }
+   </style> 
 </head>
+
 <body>
 
     <nav>
         <div class="nav-container">
             <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
-               لايف كوتش <span> هبة سعيد</span>
+                لايف كوتش <span>هبة سعيد</span>
             </div>
             <div class="links">
                 <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="index.html">الرئيسية</a></div>
                 <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="cours.html">الكورسات</a></div>
                 <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="https://wa.me/message/QORV76AWJWPUF1">التواصل</a></div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
         </div>
-        <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
-    </div>
         <div class="dropdown">
             <div class="links">
                 <a href="index.html">الرئيسية</a>
                 <a href="cours.html">الكورسات</a>
+                <a href="feadback.html">آراء الزوار</a>
                 <a href="https://wa.me/message/QORV76AWJWPUF1">التواصل</a>
                 <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
             </div>
         </div>
     </nav>
 
+    <div class="container">
+        <div class="slide">
+            <div class="item" style="background-image: url('crs/1.png');">
+                <div class="content">
+                    <div class="name">رحلة نحو السلام الداخلي</div>
+                    <div class="des"></div>
+                    <button> <a href="slam.html" style="text-decoration: none;">هيا بنا</a></button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('crs/2.png');">
+                <div class="content">
+                    <div class="name">فن التعامل مع المراهقين</div>
+                    <div class="des"></div>
+                    <button> <a href="moraheq.html"style="text-decoration: none;">هيا بنا</a></button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('crs/3.png');">
+                <div class="content">
+                    <div class="name">فن اكتساب العادة</div>
+                    <div class="des"></div>
+                    <button> <a href="add.html" style="text-decoration: none;">هيا بنا</a></button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('crs/4.png');">
+                <div class="content">
+                    <div class="name">فن الحب الواعي</div>
+                    <div class="des"></div>
+                    <button> <a href="love.html"style="text-decoration: none;">هيا بنا</a></button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('crs/5.png');">
+                <div class="content">
+                    <div class="name">فن التعامل مع الآخرين</div>
+                    <div class="des"></div>
+                    <button> <a href="tamul.html" style="text-decoration: none;">هيا بنا</a></button>
+                </div>
+            </div>
+        </div>
 
-    <div class="container"></div>
-<div class="container">
-    <div class="course">
-        <div class="course-title"> <a href="slam.html" style="color: rgb(0, 0, 0); text-decoration: none; font-size: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: bold;">  رحلة نحو السلام الداخلي</a></div>
-       
-<div class="course">
-    <div class="course-title"><a href="tamul.html" style="color: rgb(0, 0, 0); text-decoration: none; font-size: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: bold;"> ورشة عمل فن التعامل مع الآخرين </a></div>
-</div>
-<div class="course">
-    <div class="course-title"><a href="moraheq.html" style="color: rgb(0, 0, 0); text-decoration: none; font-size: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: bold;"> ورشة عمل كيفية التعامل مع المراهقين</a></div>
-</div>
-<div class="course">
-    <div class="course-title"><a href="love.html" style="color: rgb(0, 0, 0); text-decoration: none; font-size: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: bold;"> ورشة عمل فن الحب الواعي </a></div>
-</div>
-<div class="course">
-    <div class="course-title"><a href="add.html" style="color: rgb(0, 0, 0); text-decoration: none; font-size: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: bold;"> ورشة عمل فن اكتساب العادة </a></div>
-</div>
+        <div class="button">
+            <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
 
+        <!-- شريط الصور المصغرة أسفل الشرائح -->
+        <div class="thumbnails">
+            <img src="crs/1.png" alt="Thumbnail 1" class="thumbnail">
+            <img src="crs/2.png" alt="Thumbnail 2" class="thumbnail">
+            <img src="crs/3.png" alt="Thumbnail 3" class="thumbnail">
+            <img src="crs/4.png" alt="Thumbnail 4" class="thumbnail">
+            <img src="crs/5.png" alt="Thumbnail 5" class="thumbnail">
+        </div>
+    </div>
 
-<footer>
-    <p>جميع الحقوق محفوظة &copy; 2024</p>
-</footer>
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2024</p>
+    </footer>
 
+    <script>
+        let next = document.querySelector('.next');
+        let prev = document.querySelector('.prev');
+        let items = document.querySelectorAll('.item');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            items.forEach((item, i) => {
+                item.style.display = i === index ? 'block' : 'none';
+            });
+        }
+
+        next.addEventListener('click', function() {
+            currentSlide = (currentSlide + 1) % items.length;
+            showSlide(currentSlide);
+        });
+
+        prev.addEventListener('click', function() {
+            currentSlide = (currentSlide - 1 + items.length) % items.length;
+            showSlide(currentSlide);
+        });
+
+        let thumbnails = document.querySelectorAll('.thumbnail');
+        thumbnails.forEach((thumbnail, index) => {
+            thumbnail.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        showSlide(currentSlide); // عرض الشريحة الأولى عند التحميل
+    </script>
 </body>
 </html>
