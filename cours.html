@@ -1,199 +1,95 @@
 <!DOCTYPE html>
 <html lang="ar">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+
     <link rel="stylesheet" href="xdev.css" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>عناوين الكورسات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-   <style>
-        .container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            margin-top: 60px; /* لتجنب تداخل مع النافبار الثابت */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+    <style>
+        .wrapper {
+            padding: 80px 0;
         }
 
-        .slide {
-            position: relative;
-            width: 80%;
-            max-width: 1000px;
-            height: 60%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+        .section-header {
+            padding-bottom: 15px;
         }
 
-        .item {
+        .section-header h2 {
+            font-weight: 700;
+        }
+
+        .icon-area {
+            text-align: center;
+        }
+
+        .icon-area i {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            width: 60%;
+            margin: auto;
+        }
+
+        .img-area {
             width: 100%;
             height: 100%;
-            border-radius: 20px;
-            background-position: center;
-            background-size: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: none;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .item.active {
             display: block;
-            opacity: 1;
-            z-index: 1;
+            margin: auto;
+            overflow: hidden;
+            border: 10px inset #fff;
+            margin-bottom: 30px;
         }
 
-        .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(0,0,0,0.7);
-            background: rgba(0, 0, 0, 0.4);
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .content .name {
-            font-size: 30px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .content button {
-            padding: 10px 20px;
-            border: none;
-            background-color: #cb9bf3;
-            color: #fff;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .content button:hover {
-            background-color: #a07ad1;
-        }
-
-        /* تنسيق الأزرار */
-        .button {
-            position: absolute;
+        .img-area img {
             width: 100%;
-            display: flex;
-            justify-content: space-between;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 0 20px;
-            z-index: 2;
         }
 
-        .button button {
-            width: 50px;
-            height: 50px;
-            background-color: rgba(203, 155, 243, 0.8);
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s;
+        .content h5 {
+            font-weight: 900;
+            margin-top: 15px;
         }
 
-        .button button:hover {
-            background-color: rgba(138, 107, 183, 0.8);
+        .carousel-indicators {
+            bottom: -80px;
         }
 
-        /* شريط الصور المصغرة */
-        .thumbnails {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            gap: 10px;
-            flex-wrap: wrap;
+        .carousel-indicators [data-bs-target] {
+            width: 60px;
+            height: 10px;
+            background-color: #fff;
         }
 
-        .thumbnail {
-            width: 80px;
-            height: 50px;
-            border-radius: 8px;
-            cursor: pointer;
-            opacity: 0.6;
-            transition: transform 0.3s, opacity 0.3s;
-        }
-
-        .thumbnail.active, .thumbnail:hover {
-            transform: scale(1.1);
-            opacity: 1;
-        }
-
-        /* استجابة التصميم للأجهزة المحمولة */
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .links {
-                display: none;
-            }
-
-            .hamburg {
-                display: block;
-            }
-
-            .container {
-                height: auto;
-                padding: 20px 0;
-            }
-
-            .slide {
-                width: 90%;
-                height: 50vh;
-            }
-
-            .content {
-                padding: 10px;
-            }
-
-            .content .name {
-                font-size: 24px;
-            }
-
-            .content button {
-                padding: 8px 16px;
-                font-size: 14px;
-            }
-
-            .button button {
-                width: 40px;
-                height: 40px;
-            }
-
-            .thumbnails {
-                margin-top: 15px;
-            }
-
-            .thumbnail {
-                width: 60px;
-                height: 40px;
+        @media (min-width: 768px) and (max-width: 991px) {
+            .content p {
+                width: 95%;
             }
         }
-   </style> 
+
+        @media (max-width: 767px) {
+            .wrapper {
+                padding: 30px 0;
+            }
+
+            .content p {
+                width: 100%;
+            }
+
+            .icon-area i {
+                font-size: 50px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -204,9 +100,12 @@
                 لايف كوتش <span>هبة سعيد</span>
             </div>
             <div class="links">
-                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="index.html">الرئيسية</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="cours.html">الكورسات</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="https://wa.me/message/QORV76AWJWPUF1">التواصل</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a
+                        href="index.html">الرئيسية</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a
+                        href="cours.html">الكورسات</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a
+                        href="https://wa.me/message/QORV76AWJWPUF1">التواصل</a></div>
             </div>
             <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
         </div>
@@ -221,95 +120,130 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="slide">
-            <div class="item" style="background-image: url('crs/1.png');">
-                <div class="content">
-                    <div class="name">رحلة نحو السلام الداخلي</div>
-                    <div class="des"></div>
-                    <button> <a href="slam.html" style="text-decoration: none;">هيا بنا</a></button>
-                </div>
-            </div>
-            <div class="item" style="background-image: url('crs/2.png');">
-                <div class="content">
-                    <div class="name">فن التعامل مع المراهقين</div>
-                    <div class="des"></div>
-                    <button> <a href="moraheq.html"style="text-decoration: none;">هيا بنا</a></button>
-                </div>
-            </div>
-            <div class="item" style="background-image: url('crs/3.png');">
-                <div class="content">
-                    <div class="name">فن اكتساب العادة</div>
-                    <div class="des"></div>
-                    <button> <a href="add.html" style="text-decoration: none;">هيا بنا</a></button>
-                </div>
-            </div>
-            <div class="item" style="background-image: url('crs/4.png');">
-                <div class="content">
-                    <div class="name">فن الحب الواعي</div>
-                    <div class="des"></div>
-                    <button> <a href="love.html"style="text-decoration: none;">هيا بنا</a></button>
-                </div>
-            </div>
-            <div class="item" style="background-image: url('crs/5.png');">
-                <div class="content">
-                    <div class="name">فن التعامل مع الآخرين</div>
-                    <div class="des"></div>
-                    <button> <a href="tamul.html" style="text-decoration: none;">هيا بنا</a></button>
-                </div>
-            </div>
-        </div>
 
-        <div class="button">
-            <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
-            <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
-        </div>
-
-        <!-- شريط الصور المصغرة أسفل الشرائح -->
-        <div class="thumbnails">
-            <img src="crs/1.png" alt="Thumbnail 1" class="thumbnail">
-            <img src="crs/2.png" alt="Thumbnail 2" class="thumbnail">
-            <img src="crs/3.png" alt="Thumbnail 3" class="thumbnail">
-            <img src="crs/4.png" alt="Thumbnail 4" class="thumbnail">
-            <img src="crs/5.png" alt="Thumbnail 5" class="thumbnail">
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="section-header text-center">
+                        <h2>ورشة عمل</h2>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <!-- الشريحة الأولى -->
+                            <div class="carousel-item active" data-bs-interval="3000">
+                                <div class="content text-center">
+                                    <div class="icon-area animated zoomIn" style="animation-delay: 1s">
+                                        <i class="fa fa-quote-right"></i>
+                                    </div>
+                                    <div class="img-area animated zoomIn" style="animation-delay: 2s">
+                                        <img src="crs/1.png" alt="">
+                                    </div>
+                                    <h1>رحلة نحو السلام الداخلي</h1>
+                                    <button>
+                                        <a href="slam.html" style="color: white; text-decoration: none;">هيا بنا</a>
+                                    </button>
+                                </div>
+                            </div>
+    
+                            <!-- الشريحة الثانية -->
+                            <div class="carousel-item" data-bs-interval="3000">
+                                <div class="content text-center">
+                                    <div class="icon-area animated zoomIn" style="animation-delay: 1s">
+                                        <i class="fa fa-quote-right"></i>
+                                    </div>
+                                    <div class="img-area animated zoomIn" style="animation-delay: 2s">
+                                        <img src="crs/2.png" alt="">
+                                    </div>
+                                    <h1>فن التعامل مع المراهقين</h1>
+                                    <button>
+                                        <a href="moraheq.html" style="color: white; text-decoration: none;">هيا بنا</a>
+                                    </button>
+                                </div>
+                            </div>
+    
+                            <!-- الشريحة الثالثة -->
+                            <div class="carousel-item" data-bs-interval="3000">
+                                <div class="content text-center">
+                                    <div class="icon-area animated zoomIn" style="animation-delay: 1s">
+                                        <i class="fa fa-quote-right"></i>
+                                    </div>
+                                    <div class="img-area animated zoomIn" style="animation-delay: 2s">
+                                        <img src="crs/3.png" alt="">
+                                    </div>
+                                    <h1>فن اكتساب العادة</h1>
+                                    <button>
+                                        <a href="add.html" style="color: white; text-decoration: none;">هيا بنا</a>
+                                    </button>
+                                </div>
+                            </div>
+    
+                            <!-- الشريحة الرابعة -->
+                            <div class="carousel-item" data-bs-interval="3000">
+                                <div class="content text-center">
+                                    <div class="icon-area animated zoomIn" style="animation-delay: 1s">
+                                        <i class="fa fa-quote-right"></i>
+                                    </div>
+                                    <div class="img-area animated zoomIn" style="animation-delay: 2s">
+                                        <img src="crs/4.png" alt="">
+                                    </div>
+                                    <h1>فن الحب الواعي</h1>
+                                    <button>
+                                        <a href="love.html" style="color: white; text-decoration: none;">هيا بنا</a>
+                                    </button>
+                                </div>
+                            </div>
+    
+                            <!-- الشريحة الخامسة -->
+                            <div class="carousel-item" data-bs-interval="3000">
+                                <div class="content text-center">
+                                    <div class="icon-area animated zoomIn" style="animation-delay: 1s">
+                                        <i class="fa fa-quote-right"></i>
+                                    </div>
+                                    <div class="img-area animated zoomIn" style="animation-delay: 2s">
+                                        <img src="crs/5.png" alt="">
+                                    </div>
+                                    <h1>فن التعامل مع الآخرين</h1>
+                                    <button>
+                                        <a href="tamul.html" style="color: white; text-decoration: none;">هيا بنا</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- أزرار التمرير -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    
+    
 
-    <footer>
-        <p>جميع الحقوق محفوظة &copy; 2024</p>
-    </footer>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        let next = document.querySelector('.next');
-        let prev = document.querySelector('.prev');
-        let items = document.querySelectorAll('.item');
-        let currentSlide = 0;
-
-        function showSlide(index) {
-            items.forEach((item, i) => {
-                item.style.display = i === index ? 'block' : 'none';
-            });
-        }
-
-        next.addEventListener('click', function() {
-            currentSlide = (currentSlide + 1) % items.length;
-            showSlide(currentSlide);
-        });
-
-        prev.addEventListener('click', function() {
-            currentSlide = (currentSlide - 1 + items.length) % items.length;
-            showSlide(currentSlide);
-        });
-
-        let thumbnails = document.querySelectorAll('.thumbnail');
-        thumbnails.forEach((thumbnail, index) => {
-            thumbnail.addEventListener('click', () => {
-                currentSlide = index;
-                showSlide(currentSlide);
-            });
-        });
-
-        showSlide(currentSlide); // عرض الشريحة الأولى عند التحميل
+      AOS.init({offset:0});
     </script>
+    <script src="script.js"></script>
 </body>
+
 </html>
