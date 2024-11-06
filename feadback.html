@@ -1,169 +1,70 @@
 <!DOCTYPE html>
-<html lang="ar">
-
+<html lang="en">
+<!--
+  Website: divinectorweb.com
+  Subscribe Us: https://www.youtube.com/c/Divinector 
+  Support Us: https://www.buymeacoffee.com/divinector
+-->
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معرض الفيدباك بتأثير القلب</title>
+    <title>How to Create 3D Glowing Card Carousel using Materialize CSS</title> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+    body {
+      margin: 0; 
+      padding: 0;
+      background: #021514;   
+    }
+    .carousel{
+        height: 600px; 
+        perspective: 400px;
+      margin-top: 5%;
+    }
+    .carousel .carousel-item {
+      width: 400px;
+      height: 500px;
+      box-shadow: 0 0 40px #cb9bf3,#cb9bf3, 0 0 40px #530891, 0 0 40px #530891;
+      animation: animate 2s infinite alternate;
+      border-radius: 15px;
+    
+    }
+    
+    @keyframes animate {
+        to {
+          box-shadow: 0 0 50px #530891, 0 0 50px #cb9bf3, 0 0 50px #cb9bf3;
         }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('back.png');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            backdrop-filter: blur(8px);
-            flex-direction: column;
-        }
-
-        h1 {
-            text-align: center;
-            color: #fff;
-            margin-bottom: 20px;
-        }
-
-        .slider-container {
-            position: relative;
-            width: 80%;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .slider-track {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .slider-item {
-            flex: 0 0 auto;
-            width: 200px;
-            height: 200px;
-            margin: 0 10px;
-            position: relative;
-            cursor: pointer;
-           
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-           
-           
-        }
-
-        .slider-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .slider-item:hover {
-            transition: transform 0.5s ease;
-            height: auto;
-            width: auto;
-        }
-
-        .feedback-text {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-            color: white;
-            padding: 10px;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .slider-item:hover .feedback-text {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 30px;
-            color: #fff;
-            cursor: pointer;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .arrow-left {
-            left: 10px;
-        }
-
-        .arrow-right {
-            right: 10px;
-        }
-
+      }  
     </style>
 </head>
 
-<body>
-    <h1>معرض الفيدباك</h1>
-    <div class="slider-container">
-        <div class="arrow arrow-left" onclick="moveSlide(-1)">&#8592;</div>
-        <div class="slider-track">
-            <div class="slider-item">
-                <img src="F1.png" alt="فيدباك 1">
-                <div class="feedback-text">رأي من عميل 1</div>
-            </div>
-            <div class="slider-item">
-                <img src="F2.png" alt="فيدباك 2">
-                <div class="feedback-text">رأي من عميل 2</div>
-            </div>
-            <div class="slider-item">
-                <img src="F3.png" alt="فيدباك 3">
-                <div class="feedback-text">رأي من عميل 3</div>
-            </div>
-            <div class="slider-item">
-                <img src="F4.png" alt="فيدباك 4">
-                <div class="feedback-text">رأي من عميل 4</div>
-            </div>
-        </div>
-        <div class="arrow arrow-right" onclick="moveSlide(1)">&#8594;</div>
-    </div>
-
-    <script>
-        const sliderTrack = document.querySelector('.slider-track');
-        let currentIndex = 0;
-        const sliderItems = document.querySelectorAll('.slider-item');
-        const totalItems = sliderItems.length;
-
-        function moveSlide(direction) {
-            currentIndex += direction;
-            if (currentIndex < 0) {
-                currentIndex = totalItems - 1;
-            }
-            if (currentIndex >= totalItems) {
-                currentIndex = 0;
-            }
-            updateSliderPosition();
-        }
-
-        function updateSliderPosition() {
-            const offset = -currentIndex * (sliderItems[0].offsetWidth + 20); // المسافة التي يجب تحريكها
-            sliderTrack.style.transform = `translateX(${offset}px)`;
-        }
-
-    </script>
-
+<body>    
+    
+  <div class="carousel">
+   
+      <div class="carousel-item" style=" background-image: url('F1.png'); "></div>
+      <div class="carousel-item" style=" background-image: url('F2.png'); "></div>
+      <div class="carousel-item" style=" background-image: url('F3.png'); "></div>
+      <div class="carousel-item" style=" background-image: url('F4.png'); "></div>
+      <div class="carousel-item" style=" background-image: url('F1.png'); "></div>
+ 
+  
+</div>  
+    
+    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+      $(document).ready(function(){
+        $('.carousel').carousel({
+          padding: 200
+      });
+      autoplay();
+      function autoplay() {
+        $('.carousel').carousel('next');
+        setTimeout(autoplay, 4500);
+      }
+      });
+</script>
 </body>
-
 </html>
