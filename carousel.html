@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemburger Menu | Code Mentor</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    background-image: url('back.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+nav{
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #004274;
+    position: relative;
+    height: 70px;
+}
+
+.logo{
+    color: #fff;
+}
+
+nav ul{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+nav ul li{
+    list-style-type: none;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.menu-icon{
+    display: none;
+}
+
+.menu-icon i{
+    color: #fff;
+    font-size: 30px;
+}
+
+@media (max-width:600px) {
+    nav ul{
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        text-align: center;
+        background: #004274;
+        gap: 0;
+        overflow: hidden;
+    }
+    nav ul li{
+        padding: 20px;
+        padding-top: 0;
+    }
+    .menu-icon{
+        display: block;
+    }
+    #menuList{
+        transition: all 0.5s;
+    }
+}
+
+
+
+#container {
+	height: 100vh;
+	display: grid;
+	place-items: center
+}
+#slider-container {
+	height: 300px;
+	width: 85vw;
+	max-width: 1400px;
+	position: relative;
+	overflow: hidden;
+	padding: 20px;
+}
+#slider-container .btn {
+	position: absolute;
+	top: calc(50% - 30px);
+	height: 15px;
+	width: 15px;
+	border-left: 8px solid #696969;
+	border-top: 8px solid #696969;
+	cursor: pointer;
+}
+#slider-container .btn:hover {
+	transform: scale(1.2);
+}
+#slider-container .btn.inactive {
+	border-color: #282828
+}
+#slider-container .btn:first-of-type {
+	transform: rotate(-45deg);
+	left: 10px
+}
+#slider-container .btn:last-of-type {
+	transform: rotate(135deg);
+	right: 10px;
+}
+#slider-container #slider {
+	display: flex;
+	width: 1000%;
+	height: 100%;
+	transition: all .5s;
+}
+#slider-container #slider .slide {
+	height: 90%;
+	margin: auto 10px;
+	background-color: #b5b5b5;
+	border-radius: 5px;
+	box-shadow: 2px 2px 4px 2px white, -2px -2px 4px 2px white;
+	display: grid;
+	place-items: center;
+}
+#slider-container #slider .slide span {
+	color: white;
+	font-size: 60px;
+}
+@media only screen and (min-width: 1100px) {
+	#slider-container #slider .slide {
+		width: calc(2.5% - 20px);
+	}
+}
+@media only screen and (max-width: 1100px) {
+	#slider-container #slider .slide {
+		width: calc(3.3333333% - 20px);
+	}
+}
+@media only screen and (max-width: 900px) {
+	#slider-container #slider .slide {
+		width: calc(5% - 20px);
+	}
+}
+@media only screen and (max-width: 550px) {
+	#slider-container #slider .slide {
+		width: calc(10% - 20px);
+	}
+}
+
+
+
+
+    </style>   
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h1>  لايف كوتش <span style="color:#cb9bf3 ;">هبة سعيد</span></h1>
+        </div>
+        <ul id="menuList">
+            <li><a href="index.html">الرئيسة</a></li>
+            <li><a href="cours.html">الكورسات</a></li>
+            <li><a href="feadback.html">آراء الزوار</a></li>
+            <li><a href="carousel.html">الصحة الجسدية</a></li>
+            <li><a href="https://wa.me/message/QORV76AWJWPUF1">التواصل</a></li>
+        </ul>
+        <div class="menu-icon">
+            <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+        </div>
+    </nav>
+
+    <div id="container">
+		<div id="slider-container">
+			<span onclick="slideRight()" class="btn"></span>
+			<div id="slider">
+                <span onclick="slideRight()" class="btn"></span>
+				<div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v3.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v4.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v5.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v6.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v7.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v8.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v9.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v10.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v11.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v12.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v13.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v14.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v15.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v16.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="slide">
+                    <video width="150" height="150" controls>
+                        <source src="v17.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <span onclick="slideLeft()" class="btn"></span>  
+			</div>
+			<span onclick="slideLeft()" class="btn"></span>
+		</div>
+	</div>
+
+	<script src="carousel.js"></script>
+    <script>
+        let menuList = document.getElementById("menuList")
+        menuList.style.maxHeight = "0px";
+
+        function toggleMenu(){
+            if(menuList.style.maxHeight == "0px")
+            {
+                menuList.style.maxHeight = "300px";
+            }
+            else{
+                menuList.style.maxHeight = "0px";
+            }
+        }
+
+
+
+        
+        
+    </script>
+    <script src="https://kit.fontawesome.com/f8e1a90484.js" crossorigin="anonymous"></script>
+</body>
+</html>
